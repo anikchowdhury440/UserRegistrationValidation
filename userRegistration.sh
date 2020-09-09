@@ -2,6 +2,7 @@
 
 #pattern
 pattern_name="^[[:upper:]][[:lower:]]{2,}$"
+pattern_email="^[0-9a-zA-Z]+([._+-][0-9A-Za-z]+)*@[0-9A-Za-z]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})*$"
 
 #First name check
 fname_check=0
@@ -31,8 +32,22 @@ do
         fi
 done
 
+#Email check
+email_check=0
+echo "Enter Email Id with precise @ and . positions"
+while [[ email_check -eq 0 ]]
+do
+        read -p "Enter Email Id: " email
+        if [[ $email =~ $pattern_email ]]
+        then
+                email_check=1
+        else
+                echo "Please enter valid email id"
+        fi
+done
 
 #show user data
 echo "<--------- User Information --------->"
-echo "First Name: " $fname
-echo "Last Name: " $lname
+echo "First Name : " $fname
+echo "Last Name : " $lname
+echo "Email : " $email
