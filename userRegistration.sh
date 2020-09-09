@@ -64,11 +64,12 @@ done
 
 #password check
 password_check=0
-echo "Enter password minimum 8 characters, at least 1 uppercase, at least 1 numeric number"
+echo "Enter password minimum 8 characters, at least 1 uppercase, at least 1 numeric number, exactly one special character"
 while [[ password_check -eq 0 ]]
 do
 	read -p "Enter Password: " pass
-	if [[ ${#pass} -ge 8 && "$pass" == *[[:upper:]]* && "$pass" == *[0-9]* ]]
+	passpat=$(($(tr -d '[[:alnum:]]' <<< $pass | wc -m)-1))
+	if [[ ${#pass} -ge 8 && "$pass" == *[[:upper:]]* && "$pass" == *[0-9]* && $passpat -eq 1 ]]
 	then
 		password_check=1
 	else
@@ -78,8 +79,8 @@ done
 
 #show user data
 echo "<--------- User Information --------->"
-echo "First Name : " $fname
-echo "Last Name : " $lname
-echo "Email : " $email
+echo "First Name    : " $fname
+echo "Last Name     : " $lname
+echo "Email         : " $email
 echo "Mobile Number : " $mobile
-echo "Password : " $pass
+echo "Password      : " $pass
