@@ -64,11 +64,11 @@ done
 
 #password check
 password_check=0
-echo "Enter password minimum 8 characters, at least 1 uppercase"
+echo "Enter password minimum 8 characters, at least 1 uppercase, at least 1 numeric number"
 while [[ password_check -eq 0 ]]
 do
 	read -p "Enter Password: " pass
-	if [[ ${#pass} -ge 8 && "$pass" == *[[:upper:]]* ]]
+	if [[ ${#pass} -ge 8 && "$pass" == *[[:upper:]]* && "$pass" == *[0-9]* ]]
 	then
 		password_check=1
 	else
