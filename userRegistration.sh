@@ -62,9 +62,24 @@ do
         fi
 done
 
+#password check
+password_check=0
+echo "Enter password minimum 8 characters"
+while [[ password_check -eq 0 ]]
+do
+	read -p "Enter Password: " pass
+	if [[ ${#pass} -ge 8 ]]
+	then
+		password_check=1
+	else
+		echo "Please enter valid password"
+	fi
+done
+
 #show user data
 echo "<--------- User Information --------->"
 echo "First Name : " $fname
 echo "Last Name : " $lname
 echo "Email : " $email
-echo "Mobile Number: " $mobile
+echo "Mobile Number : " $mobile
+echo "Password : " $pass
