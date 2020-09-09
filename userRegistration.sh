@@ -84,3 +84,19 @@ echo "Last Name     : " $lname
 echo "Email         : " $email
 echo "Mobile Number : " $mobile
 echo "Password      : " $pass
+
+#email samples
+echo "Email samples validation"
+sample_check=0
+while [[ sample_check -eq 0 ]]
+do
+	read -p "Enter Email: " email_samples
+	if [[ $email_samples =~ $pattern_email ]]
+        then
+                echo "Valid"
+        else
+                echo "Invalid"
+        fi
+	read -p "Do you want to check another email samples ( Yes = 0, No = 1 ): " choice
+	sample_check=$choice
+done
